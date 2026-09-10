@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Sakura Theme</title>
+    <!-- เรียกใช้ Google Fonts (Prompt) สำหรับภาษาไทย -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styling */
+        :root {
+            --primary-color: #ffb7c5; /* สีชมพูซากุระ */
+            --secondary-color: #fff0f3; /* สีชมพูอ่อนมาก พื้นหลังรอง */
+            --accent-color: #d46a84; /* สีชมพูเข้มสำหรับเน้นข้อความ/ปุ่ม */
+            --text-color: #5a4a4e; /* สีน้ำตาลอมเทาสำหรับตัวหนังสือ สบายตา */
+            --bg-color: #fff9fa; /* สีพื้นหลังหลัก */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(255, 183, 197, 0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section (หน้าแรกแนะนำตัวสั้นๆ) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-color) 100%);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: #7a656a;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(212, 106, 132, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b8526c;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(255, 183, 197, 0.15);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            background-color: var(--secondary-color);
+            border: 5px solid var(--primary-color);
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(255, 183, 197, 0.15);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(255, 183, 197, 0.15);
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            nav ul {
+                gap: 15px;
+            }
+            .about-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">🌸 My Profile</div>
+        <nav>
+            <ul>
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับฉัน</a></li>
+                <li><a href="#skills">ทักษะความสามารถ</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>สวัสดีค่ะ/ครับ, ฉันชื่อ ปรมัตถ์ บุญธรรม</h1>
+        <p>ยินดีที่ได้รู้จัก! นี่คือพื้นที่เล็กๆ สำหรับแนะนำตัวและเรื่องราวเกี่ยวกับฉัน</p>
+        <a href="#about" class="btn">ทำความรู้จักกันเลย</a>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <h2 class="section-title">เกี่ยวกับฉัน</h2>
+        <div class="about-card">
+            <div class="profile-pic">
+                <img src="IMG_20260806_123723.jpg" al=>
+            </div>
+            <div class="about-info">
+                <h3>ประวัติส่วนตัว</h3>
+                <p>สวัสดีค่ะ/ครับ ฉันชื่อ ปรมัตถ์ บุญธรรม ปัจจุบันกำลังศึกษา/ทำงานด้าน สาขาคอมพิวเตอร์ธุรกิจ เป็นคนชอบเรียนรู้สิ่งใหม่ๆ มีความใส่ใจในรายละเอียด และรักในความเรียบง่าย สไตล์มินิมอล งานอดิเรกที่ชอบทำในเวลาว่างคือการฟังเพลง อ่านหนังสือ และถ่ายรูปธรรมชาติค่ะ/ครับ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">ทักษะและความสนใจ</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>💻 ด้านการทำงาน</h3>
+                <p>ทักษะเฉพาะทาง ความรู้ หรือโปรแกรมต่างๆ ที่ถนัด เช่น  การออกแบบ หรือการจัดการงาน</p>
+            </div>
+            <div class="skill-card">
+                <h3>🎨 ความชอบ & งานอดิเรก</h3>
+                <p>สิ่งที่คุณหลงใหล เช่น เล่นเกม, ฟังเพลง, ท่องเที่ยว ทำอาหาร</p>
+            </div>
+            <div class="skill-card">
+                <h3>🌟 จุดเด่นส่วนตัว</h3>
+                <p>นิสัยส่วนตัว เช่น เป็นคนยิ้มง่าย, ทำงานร่วมกับผู้อื่นได้ดี และมีความรับผิดชอบสูง ขี้กวน</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">ช่องทางการติดต่อ</h2>
+        <div class="contact-box">
+            <p>หากต้องการพูดคุย ทักทาย หรือทำความรู้จักกันเพิ่มเติม สามารถติดต่อได้ตามช่องทางนี้เลยนะคะ/ครับ</p>
+            <p><strong>Email:</strong> your.email@example.com</p>
+            <p><strong>Instagram / Social:</strong> @your_username</p>
+            <a href="mailto:your.email@example.com" class="btn" style="margin-top: 15px;">ส่งข้อความหาฉัน</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ปรมัตถ์ บุญธรรม. Sakura Profile. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
